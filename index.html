@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { background: #121212; color: white; text-align: center; font-family: sans-serif; }
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; padding: 10px; }
+        .cell { background: #333; padding: 15px; border-radius: 5px; font-weight: bold; }
+        .selected { background: #f39c12; color: black; }
+    </style>
+</head>
+<body>
+    <h1>ተወዳጅ ቢንጎ</h1>
+    <div id="status">የወጣ ቁጥር፡ -</div>
+    <div class="grid" id="board"></div>
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        let board = document.getElementById('board');
+        for(let i=0; i<25; i++){
+            let div = document.createElement('div');
+            div.className = 'cell';
+            div.innerText = Math.floor(Math.random() * 75) + 1;
+            div.onclick = () => div.classList.toggle('selected');
+            board.appendChild(div);
+        }
+    </script>
+</body>
+</html>
